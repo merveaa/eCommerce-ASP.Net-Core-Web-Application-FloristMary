@@ -1,0 +1,52 @@
+﻿@model CartViewModel
+
+    <style>
+        body{
+            margin-top : 100px;
+        }
+    </style>
+@if (Model.CartItems.Count > 0)
+{
+    @foreach (var item in Model.CartItems)
+    {
+        <div class="product-box">
+            <div class="col-4">
+                <img src="/media/products/@item.Image" class="img-fluid" alt="" />
+                        </div>
+
+                <div class="col-4">
+                    <p>Product: @item.ProductName</p>
+                    <p>Quantity: @item.Quantity</p>
+                    <p>Price: @item.Price.ToString("C2")</p>
+                    <p>Total: @Model.CartItems.Where(x => x.ProductId == item.ProductId).Sum(x => x.Quantity * x.Price).ToString("C2")</p>
+                </div>
+                <div class="col-4">
+                    <a class="btn btn-primary btn-sm" asp-action="Add" asp-route-id="@item.ProductId">+</a>
+                    <a class="btn btn-info btn-sm" asp-action="Decrease" asp-route-id="@item.ProductId">-</a>
+                    <a class="btn btn-danger btn-sm" asp-action="Remove" asp-route-id="@item.ProductId">Remove</a>
+                </div>
+            
+         </div>
+    }
+      <div class="cart-actions">
+        <p class="grand-total">Grand Total: @Model.GrandTotal.ToString("C2")</p>
+        <p>
+            <a class="btn btn-danger" asp-action="Clear">Clear Cart</a>
+            <a class="btn btn-primary" asp-action="checkout">Checkout</a>
+            <a class="btn btn-primary" asp-controller="Product" asp-action="Index">Back to shopping</a>
+
+        </p>
+    </div>
+}
+else
+{
+    <h3 class="display-4 text-center">Your cart is empty.</h3>
+}
+
+@section footer {
+       <footer class="border-top footer text-muted">
+        <div class="container" style="font-size:17px;">
+            &copy; 2023 - MaryFlower - <a asp-area="" asp-controller="Home" asp-action="Privacy" >Privacy</a>
+        </div>
+       </footer>
+}

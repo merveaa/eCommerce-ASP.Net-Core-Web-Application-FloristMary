@@ -1,0 +1,45 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+  
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - FloristMary</title>
+
+    <link rel="shortcut icon" href=".../wwwroot/sakura.png">
+     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+     <link rel="stylesheet" href="~/FloristMary.styles.css" asp-append-version="true" />
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+   
+</head>
+
+<body>
+
+    <!-- header section starts  -->
+    
+    <header>
+        <!--<a href="index.html" class="logo"><img src=".../wwwroot/sakura.png" class="logoo"></a>-->
+        <h1 class="header-title" style="font-family: 'Koulen';">
+            Mary Flowers
+        </h1>
+
+        <nav class="navbar ml-auto">
+            <a asp-controller="Home" asp-action="Index">Home</a>
+            <a asp-controller="Product" asp-action="Index">Products</a>
+            <a asp-controller="Cart" asp-action="Index">Cart </a>
+            <a asp-controller="home" asp-action="Privacy">Privacy</a>
+        </nav>
+
+       <div class="notification">
+          <partial name="_NotificationPartial" />
+      </div> 
+    </header>
+    @RenderBody()
+    @RenderSection("footer",false)
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

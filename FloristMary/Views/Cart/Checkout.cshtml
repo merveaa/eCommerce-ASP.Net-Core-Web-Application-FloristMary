@@ -1,0 +1,43 @@
+﻿@model User
+<style>
+    body{
+        margin-top : 100px;
+    }
+
+   .card {
+    padding: 40px;
+    margin: 40px;
+    border: 4px solid #ccc;
+  }
+
+</style>
+
+<div class="container m-4">
+    <div class="card mx-auto" style="width:600px">
+       <div class="card-body">
+            <form asp-action="Checkout" method="post">
+                 <h2 class="text-center font-weight-bold">Customer Information</h2>
+
+                <div class="form-group">
+                   
+                    <label class="font-size-large" asp-for="Name"> NAME : </label>
+                    <input class="form-control" asp-for="Name">
+                </div>
+                <div class="form-group">
+                    <label class="font-size-large" asp-for="Email"> EMAIL : </label>
+                    <input class="form-control" asp-for="Email">
+                </div>
+                <div class="form-group">
+                    <label class="font-size-large" asp-for="Address"> ADDRESS : </label>
+                    <input class="form-control" asp-for="Address">
+                </div>
+               
+                <div class="form-group">
+                    <input class="btn btn-primary btn-block" type="submit" value="SUBMIT">
+                </div>
+            </form>
+        </div>
+
+    </div>
+        
+    </div>
